@@ -12,4 +12,12 @@ public class Grid {
     public boolean isPositionValid(int x, int y) {
         return x >= 0 && x < dimensionX && y >= 0 && y < dimensionY;
     }
+
+    public int getDimensionX() {
+        return dimensionX;
+    }
+
+    public int getDimensionY() {
+        return dimensionY;
+    }
 }
