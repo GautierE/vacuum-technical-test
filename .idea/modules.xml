@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/iHoover.iml" filepath="$PROJECT_DIR$/iHoover.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vacuumTechnicalTest.iml" filepath="$PROJECT_DIR$/vacuumTechnicalTest.iml" />
     </modules>
   </component>
 </project>

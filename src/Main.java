@@ -31,12 +31,17 @@ public class Main {
         scanner.nextLine(); // Consumes the excess new line before reading the instructions
         String instructions = scanner.nextLine();
 
-       for (char instruction : instructions.toCharArray()) {
+        for (int i = 0; i < instructions.length(); i++) {
+            char instruction = instructions.charAt(i);
             switch (instruction) {
                 case 'D' -> vacuum.turnRight();
                 case 'G' -> vacuum.turnLeft();
-                case 'A' -> vacuum.move();
-                default -> System.out.println("Invalid instruction : " + instruction);
+                case 'A' -> {
+                    if (!vacuum.move()) { // if the vacuum is not able to move
+                        System.out.println("Instruction number " + (i+1) + " ("+ instruction +") ignored: the vacuum is at the edge of the grid.");
+                    }
+                }
+                default -> System.out.println("Instruction number " + (i+1) + " is invalid : " + instruction);
             }
         }
 

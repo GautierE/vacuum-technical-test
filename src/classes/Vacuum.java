@@ -33,7 +33,7 @@ public class Vacuum {
         }
     }
 
-    public void move() {
+    public boolean move() {
         int newX = x;
         int newY = y;
 
@@ -47,6 +47,10 @@ public class Vacuum {
         if (grid.isPositionValid(newX, newY)) {
             x = newX;
             y = newY;
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
