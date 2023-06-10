@@ -6,11 +6,13 @@ public class Vacuum {
     private int x;
     private int y;
     private Orientation orientation;
+    private final Grid grid;
 
-    public Vacuum(int x, int y, Orientation orientation) {
+    public Vacuum(int x, int y, Orientation orientation, Grid grid) {
         this.x = x;
         this.y = y;
         this.orientation = orientation;
+        this.grid = grid;
     }
 
     public void turnRight() {
@@ -42,14 +44,10 @@ public class Vacuum {
             case W -> newX--;
         }
 
-        if (isPositionValid(newX, newY)) {
+        if (grid.isPositionValid(newX, newY)) {
             x = newX;
             y = newY;
         }
-    }
-
-    private boolean isPositionValid(int x, int y) {
-        return x >= 0 && y >= 0;
     }
 
     public int getX() {
