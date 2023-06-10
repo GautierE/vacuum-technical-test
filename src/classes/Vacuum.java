@@ -31,13 +31,25 @@ public class Vacuum {
         }
     }
 
-   public void move() {
-       switch (orientation) {
-           case N -> y++;
-           case E -> x++;
-           case S -> y--;
-           case W -> x--;
-       }
+    public void move() {
+        int newX = x;
+        int newY = y;
+
+        switch (orientation) {
+            case N -> newY++;
+            case E -> newX++;
+            case S -> newY--;
+            case W -> newX--;
+        }
+
+        if (isPositionValid(newX, newY)) {
+            x = newX;
+            y = newY;
+        }
+    }
+
+    private boolean isPositionValid(int x, int y) {
+        return x >= 0 && y >= 0;
     }
 
     public int getX() {
