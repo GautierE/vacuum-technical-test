@@ -17,10 +17,10 @@ public class Main {
         Grid grid = new Grid(x, y);
 
         System.out.print("Initialize vacuum position and orientation (x, y, orientation)\n");
-        System.out.println("Enter x position :");
-        int initialX = readPositionInput(scanner);
-        System.out.println("Enter y position :");
-        int initialY = readPositionInput(scanner);
+        System.out.println("Enter x position (within the grid dimensions):");
+        int initialX = readPositionInput(scanner, grid.getDimensionX());
+        System.out.println("Enter y position (within the grid dimensions):");
+        int initialY = readPositionInput(scanner, grid.getDimensionY());
         System.out.println("Enter orientation, possible values are N (North), E (East), W (West), S (South) : ");
         Orientation initialOrientation = readOrientationInput(scanner);
 
@@ -59,17 +59,17 @@ public class Main {
         }
     }
 
-    private static int readPositionInput(Scanner scanner) {
+    private static int readPositionInput(Scanner scanner, int maxPosition) {
         while (true) {
             try {
                 int input = Integer.parseInt(scanner.next());
-                if (input < 0) {
-                    System.out.println("Invalid entry, enter a positive integer.");
+                if (input < 0 || input >= maxPosition) {
+                    System.out.println("Invalid entry, enter a position within the grid dimensions.");
                 } else {
                     return input;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid entry, enter a positive integer.");
+                System.out.println("Invalid entry, enter a valid position within the grid dimensions.");
             }
         }
     }
