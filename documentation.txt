@@ -1,0 +1,20 @@
+Documentation : 
+Développé avec Oracle OpenJDK version 15.0.2
+
+Prérequis : 
+Java (version 15 ou supérieure) doit être installé sur votre système.
+
+1. Téléchargez le code source du programme.
+2. Extrayez l'archive ZIP.
+3. Ouvrez un terminal ou une invite de commande.
+4. Accédez au répertoire contenant les fichiers source du programme.
+5. Compilez les fichiers source en exécutant la commande suivante :
+
+javac Main.java
+
+6. Une fois la compilation terminée, exécutez le programme en utilisant la commande suivante :
+
+java Main
+
+7.Suivez les instructions dans le terminal. Vous devrez fournir les dimensions de la grille, la position initiale de l'aspirateur et une série d'instructions.
+8.Après avoir fourni toutes les entrées requises, le programme affichera la position finale de l'aspirateur.
