@@ -10,17 +10,17 @@ public class Main {
 
         System.out.print("Grid creation (x, y)\n");
         System.out.println("Enter x dimension :");
-        int x = readIntInput(scanner);
+        int x = readDimensionInput(scanner);
         System.out.println("Enter y dimension :");
-        int y = readIntInput(scanner);
+        int y = readDimensionInput(scanner);
 
         Grid grid = new Grid(x, y);
 
         System.out.print("Initialize vacuum position and orientation (x, y, orientation)\n");
         System.out.println("Enter x position :");
-        int initialX = readIntInput(scanner);
+        int initialX = readPositionInput(scanner);
         System.out.println("Enter y position :");
-        int initialY = readIntInput(scanner);
+        int initialY = readPositionInput(scanner);
         System.out.println("Enter orientation, possible values are N (North), E (East), W (West), S (South) : ");
         Orientation initialOrientation = readOrientationInput(scanner);
 
@@ -44,12 +44,32 @@ public class Main {
                 " orientation=" + vacuum.getOrientation());
     }
 
-    private static int readIntInput(Scanner scanner) {
+    private static int readDimensionInput(Scanner scanner) {
         while (true) {
             try {
-                return Integer.parseInt(scanner.next());
+                int input = Integer.parseInt(scanner.next());
+                if (input <= 0) {
+                    System.out.println("Invalid entry, enter a positive integer greater than 0.");
+                } else {
+                    return input;
+                }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid entry, enter an integer.");
+                System.out.println("Invalid entry, enter a positive integer greater than 0.");
+            }
+        }
+    }
+
+    private static int readPositionInput(Scanner scanner) {
+        while (true) {
+            try {
+                int input = Integer.parseInt(scanner.next());
+                if (input < 0) {
+                    System.out.println("Invalid entry, enter a positive integer.");
+                } else {
+                    return input;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid entry, enter a positive integer.");
             }
         }
     }
