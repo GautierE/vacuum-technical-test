@@ -1,6 +1,4 @@
-package classes;
-
-import enums.Orientation;
+package com.yanport.ihoover;
 
 public class Vacuum {
     private int x;
@@ -33,7 +31,7 @@ public class Vacuum {
         }
     }
 
-    public boolean move() {
+    public void move() {
         int newX = x;
         int newY = y;
 
@@ -47,12 +45,21 @@ public class Vacuum {
         if (grid.isPositionValid(newX, newY)) {
             x = newX;
             y = newY;
-            return true;
         }
         else {
-            return false;
+            throw new InvalidPositionException();
         }
     }
+
+    public void executeInstruction(Command instruction) {
+        switch (instruction) {
+            case RIGHT -> this.turnRight();
+            case LEFT -> this.turnLeft();
+            case FORWARD -> this.move();
+            default -> throw new IllegalArgumentException("Wrong instruction");
+        }
+    }
+
 
     public int getX() {
         return x;

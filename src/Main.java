@@ -1,6 +1,4 @@
-import classes.Grid;
-import classes.Vacuum;
-import enums.Orientation;
+import com.yanport.ihoover.*;
 
 import java.util.Scanner;
 
@@ -32,16 +30,17 @@ public class Main {
         String instructions = scanner.nextLine();
 
         for (int i = 0; i < instructions.length(); i++) {
-            char instruction = instructions.charAt(i);
-            switch (instruction) {
-                case 'D' -> vacuum.turnRight();
-                case 'G' -> vacuum.turnLeft();
-                case 'A' -> {
-                    if (!vacuum.move()) { // if the vacuum is not able to move
-                        System.out.println("Instruction number " + (i+1) + " ("+ instruction +") ignored: the vacuum is at the edge of the grid.");
-                    }
-                }
-                default -> System.out.println("Instruction number " + (i+1) + " is invalid : " + instruction);
+            try {
+                var instruction = Command.parseCommand(instructions.charAt(i));
+                vacuum.executeInstruction(instruction);
+            }
+            catch(InvalidPositionException e)
+            {
+                System.out.println("Instruction number " + (i +1) + " ("+ instructions.charAt(i) +") ignored: the vacuum is at the edge of the grid.");
+            }
+            catch(Exception e)
+            {
+                System.out.println("Instruction number " + (i +1) + " is invalid : " + instructions.charAt(i));
             }
         }
 

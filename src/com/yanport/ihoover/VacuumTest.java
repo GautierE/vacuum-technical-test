@@ -1,8 +1,5 @@
-package tests;
+package com.yanport.ihoover;
 
-import classes.Grid;
-import classes.Vacuum;
-import enums.Orientation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -108,7 +105,7 @@ class VacuumTest {
     @Test
     public void shouldNotMoveOutOfGridInYIfMoveFromNorthAndGridEdge() {
         Vacuum vacuum = new Vacuum(0, 19, Orientation.N, grid);
-        vacuum.move();
+        assertThrows(InvalidPositionException.class, vacuum::move);
         assertEquals(0, vacuum.getX());
         assertEquals(19, vacuum.getY());
     }
@@ -125,7 +122,7 @@ class VacuumTest {
     @Test
     public void shouldNotMoveToNegativeYIfMoveFromSouthAndOrigin() {
         Vacuum vacuum = new Vacuum(0, 0, Orientation.S,grid);
-        vacuum.move();
+        assertThrows(InvalidPositionException.class, vacuum::move);
         assertEquals(0, vacuum.getX());
         assertEquals(0, vacuum.getY());
     }
@@ -150,7 +147,7 @@ class VacuumTest {
     @Test
     public void shouldNotMoveOutOfGridInXIfMoveFromEastAndGridEdge() {
         Vacuum vacuum = new Vacuum(19, 0, Orientation.E, grid);
-        vacuum.move();
+        assertThrows(InvalidPositionException.class, vacuum::move);
         assertEquals(19, vacuum.getX());
         assertEquals(0, vacuum.getY());
     }
@@ -168,7 +165,7 @@ class VacuumTest {
     @Test
     public void shouldNotMoveToNegativeXIfMoveFromWestAndOrigin() {
         Vacuum vacuum = new Vacuum(0, 0, Orientation.W,grid);
-        vacuum.move();
+        assertThrows(InvalidPositionException.class, vacuum::move);
         assertEquals(0, vacuum.getX());
         assertEquals(0, vacuum.getY());
     }

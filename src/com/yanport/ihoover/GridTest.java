@@ -1,6 +1,5 @@
-package tests;
+package com.yanport.ihoover;
 
-import classes.Grid;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

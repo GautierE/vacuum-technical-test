@@ -1,4 +1,4 @@
-package classes;
+package com.yanport.ihoover;
 
 public class Grid {
     private final int dimensionX;

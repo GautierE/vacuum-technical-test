@@ -1,4 +1,4 @@
-package enums;
+package com.yanport.ihoover;
 
 public enum Orientation {
     N,
